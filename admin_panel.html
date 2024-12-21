@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #333;
+            color: white;
+            position: fixed;
+        }
+        .sidebar h2 {
+            text-align: center;
+            padding: 15px;
+            background-color: #444;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #444;
+        }
+        .sidebar ul li:hover {
+            background-color: #555;
+            cursor: pointer;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .info-cards {
+            display: flex;
+            justify-content: space-between;
+        }
+        .info-card {
+            background-color: #ffd700;
+            color: #333;
+            padding: 30px;
+            flex: 1;
+            margin: 10px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .charts {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .chart-container {
+            width: 45%;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li><i class="fas fa-home"></i> Anasayfa</li>
+            <li><i class="fas fa-users"></i> Kullanıcılar</li>
+            <li><i class="fas fa-chart-line"></i> İstatistikler</li>
+            <li><i class="fas fa-bell"></i> Duyurular</li>
+            <li><i class="fas fa-cog"></i> Ayarlar</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1>Hoşgeldiniz, Admin!</h1>
+        <div class="info-cards">
+            <div class="info-card">
+                <h3>Toplam Ziyaretçi</h3>
+                <p>12,345</p>
+            </div>
+            
+            <div class="info-card">
+                <h3>Beklenen Mesajlar</h3>
+                <p>56</p>
+            </div>
+        </div>
+
+        <div class="charts">
+            <div class="chart-container">
+                <canvas id="customerChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="chefChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx1 = document.getElementById('customerChart').getContext('2d');
+        const customerChart = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: 'Müşteri Sayısı',
+                    data: [1200, 1500, 1700, 2000, 2500],
+                    backgroundColor: '#ffd700'
+                }]
+            }
+        });
+
+        const ctx2 = document.getElementById('chefChart').getContext('2d');
+        const chefChart = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: 'Şef Sayısı',
+                    data: [30, 40, 50, 60, 70],
+                    backgroundColor: '#c0c0c0',
+                    borderColor: '#ffd700'
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
